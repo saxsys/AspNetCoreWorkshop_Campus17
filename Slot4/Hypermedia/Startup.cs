@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Halcyon.Web.HAL.Json;
 
 namespace Hypermedia
 {
@@ -14,16 +11,22 @@ namespace Hypermedia
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore();
+            services
+            .AddMvcCore()
+            .AddMvcOptions(options =>
+            {
+                options.ReturnHttpNotAcceptable = true;
+                options.OutputFormatters.Add(new JsonHalOutputFormatter(new[] { "application/hal+json" }));
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                await context.Response.WriteAsync("End of pipeline!");
             });
         }
     }

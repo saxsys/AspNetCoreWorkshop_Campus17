@@ -2,7 +2,7 @@
 {
     public class SourceFile
     {
-        public string ProgrammingLanguage { get; set; }
+        public string Name { get; set; }
 
         public Author Author { get; set; }
     }

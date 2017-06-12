@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Halcyon.HAL;
+using System.Collections.Generic;
 
 namespace Hypermedia.Controllers.Repositories
 {
     public class RepositoyListRepresentation
     {
-        public IEnumerable<RepositoryRepresentation> Repositories { get; set; }
+        public IEnumerable<HALResponse> Repositories { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Halcyon.HAL;
 using Hypermedia.Controllers.Repositories;
+using Hypermedia.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -13,7 +14,20 @@ namespace Hypermedia.Controllers
         {
             var listRepresentation = new RepositoyListRepresentation
             {
-                Repositories = Enumerable.Range(0, 10).Select(_ => new RepositoryRepresentation { Name = $"Repository {_}" }).ToList()
+                Repositories = 
+                    RepositoryService
+                    .Get
+                    .Select(_ => 
+                        new HALResponse(
+                            new RepositoryRepresentation
+                            {
+                                Name = _.Name
+                            })
+                            .AddLinks(new[]
+                            {
+                                new Link("item", Localhost.Url($"/repositories/{_.Name}"))
+                            })
+                        )
             };
 
             return new HALResponse(listRepresentation)

@@ -2,6 +2,7 @@
 using Hypermedia.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
@@ -33,12 +34,17 @@ namespace Hypermedia.Controllers.Repositories
 
             return
                 new HALResponse(repoRepresentation)
-                .AddLinks(new[]
-                {
-                    new Link(Link.RelForSelf, Localhost.Url($"/repositories/{name}")),
+                .AddLinks(this.GetLinks(name));
+        }
 
-                    new Link("delete", Localhost.Url($"/repositories/{name}"), "Delete", "DELETE")
-                });
+        private IEnumerable<Link> GetLinks(string repoName)
+        {
+            yield return new Link(Link.RelForSelf, Localhost.Url($"/repositories/{repoName}"));
+
+            if (this.User.Identity.IsAuthenticated)
+            {
+                yield return new Link("delete", Localhost.Url($"/repositories/{repoName}"), "Delete", "DELETE");
+            }
         }
     }
 }

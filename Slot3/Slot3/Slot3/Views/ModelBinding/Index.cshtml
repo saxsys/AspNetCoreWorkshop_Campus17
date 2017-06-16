@@ -1,0 +1,28 @@
+﻿@model Slot3.Controllers.Person
+
+@* ----------------- ASP.NET 4 ----------------------------------*@
+<div>
+    <div>
+        @Html.LabelFor(_ => _.Firstname)
+        @Html.EditorFor(_ => _.Firstname)
+    </div>
+    <div>
+        @Html.LabelFor(_ => _.Lastname)
+        @Html.EditorFor(_ => _.Lastname)
+    </div>
+</div>
+
+<br />
+
+@* ----------------- ASP.NET Core 1.0 ----------------------------*@
+
+<div>
+    <div>
+        <label asp-for="Firstname">Firstname:</label>
+        <input asp-for="Firstname" />
+    </div>
+    <div>
+        <label asp-for="Lastname">Lastname:</label>
+        <input asp-for="Lastname" />
+    </div>
+</div>

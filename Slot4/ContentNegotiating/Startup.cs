@@ -11,7 +11,7 @@ namespace ContentNegotiating
         public void ConfigureServices(IServiceCollection services)
         {
             services
-            .AddMvcCore()
+            .AddMvc()
             .AddMvcOptions(options =>
             {
                 options.ReturnHttpNotAcceptable = true;

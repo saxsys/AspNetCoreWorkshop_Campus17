@@ -18,7 +18,7 @@ namespace Slot3
         {
             services.AddMvc();
 
-            services.AddTransient(typeof(IHtmlHelper<>), typeof(CampusHtmlHelper<>));
+            //services.AddTransient(typeof(IHtmlHelper<>), typeof(CampusHtmlHelper<>));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

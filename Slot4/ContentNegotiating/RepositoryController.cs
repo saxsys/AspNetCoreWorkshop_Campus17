@@ -6,21 +6,25 @@ namespace ContentNegotiating
 {
     public class RepositoryController : ControllerBase
     {
-        public IEnumerable<Repository> Index()
+        public Repository[] Index()
         {
-            return 
+            return
                 Enumerable
                 .Range(0, 10)
                 .Select(_ => new Repository
                 {
                     Name = $"Repo {_}",
-                    ProgrammingLanguages = new[] { "F#", "C#" },
-                    SourceFiles = new []
+                    ProgrammingLanguages = new[]
+                    {
+                        "F#", "C#"
+                    },
+                    SourceFiles = new[]
                     {
                         new SourceFile { Name = "file1.fs" },
                         new SourceFile { Name = "file2.cs" }
                     }
-                });
+                })
+                .ToArray();
         }
     }
 }

@@ -12,14 +12,18 @@ namespace ContentNegotiating
         {
             services
             .AddMvc()
+            .AddXmlSerializerFormatters()
             .AddMvcOptions(options =>
             {
-                options.ReturnHttpNotAcceptable = true;
+                options.RespectBrowserAcceptHeader = true;
+                options.ReturnHttpNotAcceptable    = true;
             });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole(LogLevel.Trace);
+
             app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>

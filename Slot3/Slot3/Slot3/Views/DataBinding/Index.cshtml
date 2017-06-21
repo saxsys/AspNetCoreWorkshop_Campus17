@@ -3,12 +3,12 @@
 @* ----------------- ASP.NET 4 MVC --------------------------------*@
 <div>
     <div>
-        @Html.LabelFor(_ => _.Firstname)
-        @Html.EditorFor(_ => _.Firstname)
+        @this.Html.LabelFor(_ => _.Firstname)
+        @this.Html.EditorFor(_ => _.Firstname)
     </div>
     <div>
-        @Html.LabelFor(_ => _.Lastname)
-        @Html.EditorFor(_ => _.Lastname)
+        @this.Html.LabelFor(_ => _.Lastname)
+        @this.Html.EditorFor(_ => _.Lastname)
     </div>
 </div>
 
@@ -16,7 +16,7 @@
 
 @* ----------------- ASP.NET Core 1.0 ----------------------------*@
 
-<div>
+<div style="display: none">
     <div>
         <label asp-for="Firstname">Firstname:</label>
         <input asp-for="Firstname" type="text" />

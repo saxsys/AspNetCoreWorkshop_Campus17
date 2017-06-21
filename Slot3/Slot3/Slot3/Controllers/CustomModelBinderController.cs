@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Mvc.Internal;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Slot3.Controllers
 {
     public class CustomModel
     {
-        public DateTime Now { get; set; }
+        public DateTime ATime { get; set; }
     }
 
     public class CustomModelBinderController : Controller
@@ -37,10 +38,13 @@ namespace Slot3.Controllers
     {
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
-            bindingContext.Model = new CustomModel
+            var boundModel = new CustomModel
             {
-                Now = DateTime.Now
+                ATime = DateTime.Now
             };
+
+            bindingContext.Model  = boundModel;
+            bindingContext.Result = ModelBindingResult.Success(boundModel);
 
             return TaskCache.CompletedTask;
         }

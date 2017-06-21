@@ -43,9 +43,8 @@ namespace Slot3.Controllers
                 ATime = DateTime.Now
             };
 
-            bindingContext.FieldName = "customModel";
-            bindingContext.Model     = boundModel;
-            bindingContext.Result    = ModelBindingResult.Success(boundModel);
+            bindingContext.Model  = boundModel;
+            bindingContext.Result = ModelBindingResult.Success(boundModel);
 
             return TaskCache.CompletedTask;
         }

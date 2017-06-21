@@ -1,6 +1,6 @@
 ﻿@model Slot3.Controllers.Person
 
-@* ----------------- ASP.NET 4 ----------------------------------*@
+@* ----------------- ASP.NET 4 MVC --------------------------------*@
 <div>
     <div>
         @Html.LabelFor(_ => _.Firstname)
@@ -19,10 +19,10 @@
 <div>
     <div>
         <label asp-for="Firstname">Firstname:</label>
-        <input asp-for="Firstname" />
+        <input asp-for="Firstname" type="text" />
     </div>
     <div>
         <label asp-for="Lastname">Lastname:</label>
-        <input asp-for="Lastname" />
+        <input asp-for="Lastname" type="text" />
     </div>
 </div>

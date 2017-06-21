@@ -2,7 +2,7 @@
 
 namespace Slot3.Controllers
 {
-    public class ModelBindingController : Controller
+    public class DataBindingController : Controller
     {
         public IActionResult Index()
         {

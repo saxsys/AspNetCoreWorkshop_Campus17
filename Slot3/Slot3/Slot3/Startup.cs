@@ -16,7 +16,9 @@ namespace Slot3
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options => options.ModelBinderProviders.Insert(0, new CustomModelBinderProvider()));
+            services.AddMvc(
+                //options => options.ModelBinderProviders.Insert(0, new CustomModelBinderProvider())
+            );
 
             //services.AddTransient(typeof(IHtmlHelper<>), typeof(CampusHtmlHelper<>));
         }
